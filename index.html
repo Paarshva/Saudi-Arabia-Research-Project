@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saudi NBFI Market Report 2025</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <h1>Saudi Arabia NBFI Market Report 2025</h1>
+                <p class="header-subtitle">Comprehensive analysis of SAMA-licensed Non-Bank Financial Institutions and digital lending platforms</p>
+            </div>
+        </header>
+
+        <!-- Main App Layout -->
+        <div class="main-layout">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar" aria-label="Primary Navigation">
+                <nav class="nav-menu">
+                    <button class="nav-btn active" data-view="overview">
+                        <span class="nav-icon" aria-hidden="true">📊</span>
+                        Overview
+                    </button>
+                    <button class="nav-btn" data-view="profiles">
+                        <span class="nav-icon" aria-hidden="true">🏢</span>
+                        Company Profiles
+                    </button>
+                    <button class="nav-btn" data-view="charts">
+                        <span class="nav-icon" aria-hidden="true">📈</span>
+                        Charts
+                    </button>
+                    <button class="nav-btn" data-view="glossary">
+                        <span class="nav-icon" aria-hidden="true">📚</span>
+                        Glossary
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="content" id="main-content">
+                <!-- Overview View -->
+                <section id="overview-view" class="view active" aria-labelledby="overview-heading">
+                    <div class="view-header">
+                        <h2 id="overview-heading">Market Overview</h2>
+                        <p class="view-description">Executive summary and market positioning of Saudi Arabia's leading providers</p>
+                    </div>
+                    
+                    <div class="overview-content">
+                        <article class="executive-summary card" aria-label="Executive Summary">
+                            <div class="card__body">
+                                <h3>Executive Summary</h3>
+                                <p>Saudi Arabia's consumer and auto-lending market is dominated by a handful of large, SAMA-licensed <span class="glossary-term" data-term="NBFI">NBFIs</span> and an increasingly influential group of digital platforms that have obtained consumer-finance or <span class="glossary-term" data-term="BNPL">BNPL</span> licences since 2023.</p>
+                                <p>Together they control well over SAR 80 billion in consumer-facing credit, fund their books through bank lines, <span class="glossary-term" data-term="Securitisation">securitisations</span> and <span class="glossary-term" data-term="Sukuk">sukuk</span>, and are driving the Kingdom's shift toward cash-light retail financial services under Vision 2030.</p>
+                                <div class="key-stats">
+                                    <div class="stat">
+                                        <span class="stat-value">SAR 80B+</span>
+                                        <span class="stat-label">Total Market Credit</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">10</span>
+                                        <span class="stat-label">Leading Providers</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">13%</span>
+                                        <span class="stat-label">YoY Asset Growth</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <div class="market-chart-container card" aria-label="Market Share Chart">
+                            <div class="card__body">
+                                <h3>Market Share by Total Assets</h3>
+                                <div class="chart-wrapper">
+                                    <canvas id="marketShareChart" width="400" height="300"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Company Profiles View -->
+                <section id="profiles-view" class="view" aria-labelledby="profiles-heading">
+                    <div class="view-header">
+                        <h2 id="profiles-heading">Company Profiles</h2>
+                        <p class="view-description">Detailed profiles of the leading providers</p>
+                    </div>
+
+                    <div class="filters-section card" aria-label="Filters">
+                        <div class="card__body">
+                            <h3>Filters</h3>
+                            <div class="filter-groups">
+                                <div class="filter-group" role="group" aria-label="Segment Type">
+                                    <label class="form-label">Segment</label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label"><input type="checkbox" id="filter-traditional" checked> Traditional</label>
+                                        <label class="checkbox-label"><input type="checkbox" id="filter-digital" checked> Digital</label>
+                                    </div>
+                                </div>
+                                <div class="filter-group" role="group" aria-label="Product Focus">
+                                    <label class="form-label">Product Focus</label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label"><input type="checkbox" id="filter-auto" checked> Auto</label>
+                                        <label class="checkbox-label"><input type="checkbox" id="filter-consumer" checked> Consumer</label>
+                                        <label class="checkbox-label"><input type="checkbox" id="filter-bnpl" checked> <span class="glossary-term" data-term="BNPL">BNPL</span></label>
+                                        <label class="checkbox-label"><input type="checkbox" id="filter-sme" checked> SME</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profiles-table-container card" aria-label="Profiles Table">
+                        <div class="card__body">
+                            <div class="table-wrapper">
+                                <table id="profiles-table" class="data-table" aria-describedby="table-description">
+                                    <caption id="table-description" class="sr-only">Sortable table of provider metrics</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" data-sort="display_name">Provider</th>
+                                            <th scope="col" data-sort="segment">Segment</th>
+                                            <th scope="col" data-sort="total_assets">Total Assets (SAR bn)</th>
+                                            <th scope="col" data-sort="net_profit">Net Profit 2024 (SAR m)</th>
+                                            <th scope="col" data-sort="core">Core Business</th>
+                                            <th scope="col" data-sort="license_type">License Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="profiles-table-body"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Charts View -->
+                <section id="charts-view" class="view" aria-labelledby="charts-heading">
+                    <div class="view-header">
+                        <h2 id="charts-heading">Charts &amp; Analytics</h2>
+                        <p class="view-description">Visual comparison of financial metrics</p>
+                    </div>
+
+                    <div class="charts-grid">
+                        <div class="chart-card card" aria-label="Assets vs Profitability">
+                            <div class="card__body">
+                                <h3>Assets vs Profitability</h3>
+                                <div class="chart-wrapper"><canvas id="assetsVsProfitChart"></canvas></div>
+                            </div>
+                        </div>
+                        <div class="chart-card card" aria-label="Product Mix">
+                            <div class="card__body">
+                                <h3>Product Mix Comparison</h3>
+                                <div class="chart-wrapper"><canvas id="productMixChart"></canvas></div>
+                            </div>
+                        </div>
+                        <div class="chart-card card" aria-label="Funding Sources">
+                            <div class="card__body">
+                                <h3>Funding Sources Distribution</h3>
+                                <div class="chart-wrapper"><canvas id="fundingSourcesChart"></canvas></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Glossary View -->
+                <section id="glossary-view" class="view" aria-labelledby="glossary-heading">
+                    <div class="view-header">
+                        <h2 id="glossary-heading">Glossary</h2>
+                        <p class="view-description">Definitions of technical terms</p>
+                    </div>
+
+                    <div class="glossary-search card">
+                        <div class="card__body">
+                            <input type="text" id="glossary-search" class="form-control" placeholder="Search terms…" aria-label="Search glossary">
+                        </div>
+                    </div>
+
+                    <div class="glossary-list" id="glossary-list"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Company Profile Modal -->
+    <div id="profile-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Company Profile</h2>
+                <button class="modal-close" id="modal-close" aria-label="Close profile">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Glossary Tooltip -->
+    <div id="glossary-tooltip" class="tooltip" role="tooltip"><div class="tooltip-content" id="tooltip-content"></div></div>
+
+    <!-- Glossary Drawer -->
+    <aside id="glossary-drawer" class="drawer" aria-live="polite" aria-hidden="true">
+        <div class="drawer-content">
+            <button id="drawer-close" class="modal-close" aria-label="Close glossary">&times;</button>
+            <h3 id="drawer-term"></h3>
+            <p id="drawer-definition"></p>
+        </div>
+    </aside>
+
+    <script src="app.js"></script>
+</body>
+</html>
